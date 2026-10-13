@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 //进出管理  收入统计  Stat
 //空余车位显示
+//应该用两个集合框架来描述Stat对象
+//使用lang类型计时，用System中的时间戳函数
+//功能方法尽量细分  20,20,50原则  类中不应超20功能方法 方法中不要超20行 包中不要超50个类
 public class Park {
     public static int stallCount = 100;//车位总数(最大100)
 
