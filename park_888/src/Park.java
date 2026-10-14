@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 //应该用两个集合框架来描述Stat对象
 //使用lang类型计时，用System中的时间戳函数
 //功能方法尽量细分  20,20,50原则  类中不应超20功能方法 方法中不要超20行 包中不要超50个类
-public class Park {
+public class Park implements Serializable {
     public static int stallCount = 100;//车位总数(最大100)
 
     HashMap<String, Stat> stats=new HashMap<>();//车辆信息
@@ -67,6 +68,14 @@ public class Park {
 
         Scanner scanner = new Scanner(System.in);
         Park park = new Park();
+        //反序列化对象
+        Object obj = ObjectUtile.readObjectFromFile("C:/JAVA2/xiang_mu/park_888/park_888/park_888/src/park.ser");
+        if (obj instanceof Park) {
+            park = (Park) obj;
+            System.out.println("已从文件加载历史数据！");
+        } else {
+            System.out.println("未发现数据文件，使用全新数据！");
+        }
         while (true) {
             System.out.println("=========================================");
             System.out.println("===============停车场管理系统===============");
@@ -109,6 +118,7 @@ public class Park {
                     break;
                 }
                 case 5:{
+                    ObjectUtile.saveObjectToFile(park, "C:/JAVA2/xiang_mu/park_888/park_888/park_888/src/park.ser");
                     System.exit(0);
                     break;
                 }

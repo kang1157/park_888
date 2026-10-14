@@ -1,4 +1,6 @@
-public class Fee {
+import java.io.Serializable;
+
+public class Fee implements Serializable {
     public String code;//车牌号
     public int fee;//停车费
     //构造函数

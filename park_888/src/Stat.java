@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Stat {
+public class Stat implements Serializable {
     //进出管理  flow
     public String code;//车牌号
     public LocalDateTime inTime;//进入时间
